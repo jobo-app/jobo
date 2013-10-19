@@ -94,8 +94,10 @@ describe JobsController do
       end
 
       it "creates a job using bob" do
-        post :create, {:job => bob_attributes}, valid_session
-        response.should redirect_to(Job.last)
+        VCR.use_cassette('bob_create_valid') do
+          post :create, {:job => bob_attributes}, valid_session
+          response.should redirect_to(Job.last)
+        end
 
         Job.last.position_title.should eql "Front End Web Developer"
         Job.last.company_name.should eql "Potato"
@@ -119,7 +121,9 @@ describe JobsController do
 
       it "doesn't process invalid URLs" do
         Job.any_instance.stub(:save).and_return(false)
-        post :create, {:job => invalid_bob_attributes, :format => :json}, valid_session
+        VCR.use_cassette('bob_create_invalid') do
+          post :create, {:job => invalid_bob_attributes, :format => :json}, valid_session
+        end
         response.status.should eql 422
       end
     end
