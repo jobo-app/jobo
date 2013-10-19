@@ -43,11 +43,14 @@ group :development, :test do
 end
 
 group :test do
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
-  gem "awesome_print"
+  gem 'awesome_print'
 end
 
 # Use ActiveModel has_secure_password
