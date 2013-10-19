@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://jobs.github.com/positions/154147d8-1edb-11e3-891f-39433b6c880b.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 19 Oct 2013 18:39:26 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '3136'
+      Set-Cookie:
+      - rack.session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRiJFOTIwNzk1YzNhNmUzZDJjMjBmMjM4%0AYjM0NTFmNGZlMmU5ODA0YjkxNmM2ODQ5ZjVlMTViNmQ0ZWVhZjdhYjE5OEki%0ADXRyYWNraW5nBjsARnsISSIUSFRUUF9VU0VSX0FHRU5UBjsARiItYjIxN2U5%0AOGMzYmY3MGYzY2Y0NjMzYTU0NDdkNjU4N2VlYTk3NGJhMUkiGUhUVFBfQUND%0ARVBUX0VOQ09ESU5HBjsARiItZGRkMDk4OTE3NGYxOWE1YjE4NzkxMjEzY2M0%0AMGM1YTYwOWQyNTQ2Y0kiGUhUVFBfQUNDRVBUX0xBTkdVQUdFBjsARiItZGEz%0AOWEzZWU1ZTZiNGIwZDMyNTViZmVmOTU2MDE4OTBhZmQ4MDcwOQ%3D%3D%0A--b132e5465ce5d9d1d9ac4bb6f8c35585f8165ab5;
+        path=/; HttpOnly; secure
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: |
+        {"id":"154147d8-1edb-11e3-891f-39433b6c880b","created_at":"Thu Oct 17 16:45:10 UTC 2013","title":"Front End Web Developer","location":"London, UK","type":"Full Time","description":"<p>Potato has an ongoing need for talented full-time freelance developers, to work on interesting web projects.</p>\n\n<p>You&#39;ll be working at our office in London, United Kingdom, developing web tools and apps for huge audiences. Our clients include Google, YouTube, News International, PayPal and other agencies such as BBH and Mother.</p>\n\n<p>This role will see you working as part of a friendly, expert team. The workload will sometimes be hectic, but the atmosphere is cheerful and proactive. We want to put you in a position to write the best code that you can.</p>\n\n<p>We make progressively enhanced, standards-based web apps, so you&#39;ll need to be at home with HTML, CSS, JavaScript (particularly jQuery). You might know about Backbone.js. Extra points for user-centred thinkers.</p>\n\n<p>This is a full-time role starting ASAP.</p>\n\n<p>Required experience:</p>\n\n<ul>\n<li>HTML (including HTML5)</li>\n<li>CSS (including LESS / SASS)</li>\n<li>JavaScript (particularly jQuery)</li>\n<li>Version control (particularly git)</li>\n<li>Template engine such as Django or Smarty</li>\n<li>You must be comfortable using the command line</li>\n</ul>\n\n<p>Big pluses for experience with:</p>\n\n<ul>\n<li>JavaScript MVC frameworks, e.g. Backbone.js / AngularJS</li>\n<li>Building complex and/or one-page applications in JavaScript</li>\n<li>JavaScript unit testing tools</li>\n<li>Development &amp; consumption of HTTP APIs</li>\n<li>Localising web apps</li>\n<li>Open source projects</li>\n<li>Google Apps &amp; APIs</li>\n<li>Python &amp; Django</li>\n<li>User-Interface development</li>\n<li>Google App Engine</li>\n<li>Databases</li>\n</ul>\n\n<p>Pay &amp; benefits:</p>\n\n<ul>\n<li>Competitive daily rate</li>\n<li>Free lunch, drinks and snacks</li>\n<li>A fun and supportive, developer-focussed working environment</li>\n</ul>\n\n<p>Apply with:</p>\n\n<ul>\n<li>A cover letter</li>\n<li>Your CV, including references</li>\n<li>Details of your availability</li>\n<li>Any sample URLs that show off your code and prove you&#39;ll be able to hit the ground running</li>\n</ul>\n\n<p>Application:</p>\n\n<p>Drop us an email - if we like what we see we&#39;ll get back to you quickly to arrange to have a cup of tea and a chat.</p>\n\n<p><a href=\"mailto:jobs+fe-lon@p.ota.to\">jobs+fe-lon@p.ota.to</a></p>\n\n<p>Agencies:\nPlease don&#39;t call. If (one day) we need you, we&#39;ll be in touch.\nWe will not engage with cold-calling or emailing agencies in any way.</p>\n","how_to_apply":"<ul>\n<li>A cover letter</li>\n<li>Your CV, including references</li>\n<li>Details of your availability</li>\n<li>Any sample URLs that show off your code and prove you&#39;ll be able to hit the ground running</li>\n</ul>\n","company":"Potato","company_url":"http://p.ota.to","company_logo":"http://github-jobs.s3.amazonaws.com/0a8011f8-1edb-11e3-8dbc-2656cd04c27b.png","url":"http://jobs.github.com/positions/154147d8-1edb-11e3-891f-39433b6c880b"}
+    http_version: 
+  recorded_at: Sat, 19 Oct 2013 18:39:19 GMT
+recorded_with: VCR 2.6.0
