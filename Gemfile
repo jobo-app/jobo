@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # Get job listings by URL
 gem 'bob', :github => "tdgs/bob"
 
+# Pretty CSS
+gem 'zurb-foundation', '~> 4.0.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -12,9 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require angular
 //= require angular-resource
 //= require_tree .
 
 // The asset pipiline seems to ignore `//=` directives inside of ERB conditionals
 <%= File.read('lib/assets/javascripts/expose_request_count.js') if Rails.env.test? %>
+
+$(document).ready(function(){
+  $(document).foundation();
+});
