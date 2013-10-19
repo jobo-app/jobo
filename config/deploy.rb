@@ -79,6 +79,10 @@ after 'deploy:update_code' do
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
 end
 
+after 'deploy:finalize_update' do
+  run "cd #{current_release} && git push -f origin master:production"
+end
+
 # Restart Passenger
 deploy.task :restart, :roles => :app do
   # Fix Permissions
