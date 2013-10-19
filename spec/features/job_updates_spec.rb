@@ -12,6 +12,7 @@ describe "JobUpdates", js: true do
         click_button "Create"
       end
 
+      wait_for_ajax
       page.should have_css(".job-update", text: "just an update")
       JobUpdate.by_job_id(job.id).count.should == 1
     end
@@ -28,6 +29,7 @@ describe "JobUpdates", js: true do
         find("button").click
       end
 
+      wait_for_ajax
       page.should have_no_css(".job-update", text: "moufa")
       JobUpdate.by_job_id(job.id).count.should == 0
     end

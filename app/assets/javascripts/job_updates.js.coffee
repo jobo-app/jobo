@@ -9,11 +9,11 @@ Blang.config ["$httpProvider", ($httpProvider) ->
   # Inject the CSRF token
   csrfToken = $("meta[name=csrf-token]").attr('content')
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = csrfToken
+
   # By default, angular sends "application/json, text/plain, */*" which rails
   # sees and focuses on the */* and sends html :-(
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
 ]
-
 
 # Here's our JobUpdate resource for interacting with the server
 Blang.factory "JobUpdate", ($resource) -> $resource "/job_updates/:id", id: "@id"

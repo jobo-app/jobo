@@ -1,6 +1,6 @@
 def wait_for_ajax
   Timeout.timeout(Capybara.default_wait_time) do
-    until page.evaluate_script('jQuery.active') == 0
+    until page.evaluate_script('AngularRequestCount') == 0
       sleep 0.1
     end
   end
