@@ -34,6 +34,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-annotate'
 end
 
 group :test do
