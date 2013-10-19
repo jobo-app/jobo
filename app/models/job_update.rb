@@ -1,6 +1,8 @@
 class JobUpdate < ActiveRecord::Base
   belongs_to :job
 
+  validates :description, :job, presence: true
+
   scope :by_job_id, -> (job_id) {
     where(job_id: job_id)
   }
