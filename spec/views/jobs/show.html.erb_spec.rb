@@ -4,8 +4,7 @@ describe "jobs/show" do
   before(:each) do
     @job = assign(:job, stub_model(Job,
       :company_name => "Company Name",
-      :position_title => "Position Title",
-      :communications => "MyText"
+      :position_title => "Position Title"
     ))
   end
 
@@ -14,6 +13,5 @@ describe "jobs/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Company Name/)
     rendered.should match(/Position Title/)
-    rendered.should match(/MyText/)
   end
 end

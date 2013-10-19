@@ -5,7 +5,6 @@
     <tr>
       <th>Company name</th>
       <th>Position title</th>
-      <th>Communications</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= job.company_name %></td>
         <td><%= job.position_title %></td>
-        <td><%= job.communications %></td>
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>

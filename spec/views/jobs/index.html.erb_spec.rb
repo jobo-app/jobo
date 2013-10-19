@@ -5,13 +5,11 @@ describe "jobs/index" do
     assign(:jobs, [
       stub_model(Job,
         :company_name => "Company Name",
-        :position_title => "Position Title",
-        :communications => "MyText"
+        :position_title => "Position Title"
       ),
       stub_model(Job,
         :company_name => "Company Name",
-        :position_title => "Position Title",
-        :communications => "MyText"
+        :position_title => "Position Title"
       )
     ])
   end
@@ -21,6 +19,5 @@ describe "jobs/index" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Company Name".to_s, :count => 2
     assert_select "tr>td", :text => "Position Title".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
   end
 end
