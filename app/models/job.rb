@@ -11,4 +11,5 @@
 
 class Job < ActiveRecord::Base
   has_many :job_updates
+  has_one :last_update, -> { order("created_at DESC") }, class_name: "JobUpdate"
 end

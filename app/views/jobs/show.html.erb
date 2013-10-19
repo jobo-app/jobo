@@ -1,33 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Company name:</strong>
+<h1>
   <%= @job.company_name %>
-</p>
+  <small><%= @job.position_title %></small>
+</h1>
 
-<p>
-  <strong>Position title:</strong>
-  <%= @job.position_title %>
-</p>
+<% if notice %>
+  <p class="alert-box success"><%= notice %></p>
+<% end -%>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<div>
+  <%= link_to 'Edit job', edit_job_path(@job), class: "secondary small button" %>
+  <%= link_to 'Back to list', jobs_path, class: "secondary small button" %>
+</div>
 
 <div ng-app="blang">
   <div ng-controller="JobUpdateCtrl" data-job-id="<%= @job.id %>">
-    <div class="job-update" ng-repeat="jobUpdate in jobUpdates">
-      {{ jobUpdate.created_at }}
-      {{ jobUpdate.description }}
-      <button ng-click="delete($index)">&times;</button>
+    <div class="section-container auto" data-section>
+      <section class="active">
+        <p class="title" data-section-title><a href="#panel1">Generic Note</a></p>
+        <div class="content" data-section-content>
+          <form ng-submit="add()" action="" class="new-job-update">
+            <div class="row">
+              <div class="large-10 columns">
+                <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
+              </div>
+              <div class="large-2 columns">
+                <input class="small button expand" type="submit" value="Create"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section>
+        <p class="title" data-section-title><a href="#panel2">Resume</a></p>
+        <div class="content" data-section-content>
+          <p class="alert-box alert">WIP</p>
+        </div>
+      </section>
     </div>
 
-    <form ng-submit="add()" action="">
-      <fieldset>
-        <legend>New job update</legend>
-
-        <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
-        <input type="submit" value="Create"/>
-      </fieldset>
-    </form>
+    <ul>
+      <li class="job-update" ng-repeat="jobUpdate in jobUpdates">
+        {{ jobUpdate.created_at }}
+        {{ jobUpdate.description }}
+        <button class="tiny button secondary" ng-click="delete($index)">&times;</button>
+      </li>
+    </ul>
   </div>
 </div>

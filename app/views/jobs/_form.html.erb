@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div>
     <%= f.label :company_name %><br>
     <%= f.text_field :company_name %>
   </div>
-  <div class="field">
+
+  <div>
     <%= f.label :position_title %><br>
     <%= f.text_field :position_title %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div>
+    <%= f.submit nil, class: "small button" %>
   </div>
 <% end %>
