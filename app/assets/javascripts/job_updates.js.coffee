@@ -7,7 +7,8 @@ window.Blang = angular.module("blang", ["ngResource"])
 
 Blang.config ["$httpProvider", ($httpProvider) ->
   # Inject the CSRF token
-  $httpProvider.defaults.headers.common['X-CSRF-Token'] = document.getElementsByName("csrf-token")[0].content
+  csrfToken = $("meta[name=csrf-token]").attr('content')
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = csrfToken
   # By default, angular sends "application/json, text/plain, */*" which rails
   # sees and focuses on the */* and sends html :-(
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
