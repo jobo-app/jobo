@@ -1,0 +1,12 @@
+<%= form_tag(jobs_path, method: 'POST',
+             'ng-submit' => 'createFromURL(url)') do %>
+  <fieldset>
+    <legend>Create a job from a URL</legend>
+
+    <input type="url" name="job[bob_listing_url]"
+           value=""
+           ng-bind="url"
+           placeholder="http://jobs.github.com/">
+    <button type="submit" name="create_job_from_url">Create</button>
+  </fieldset>
+<%- end -%>

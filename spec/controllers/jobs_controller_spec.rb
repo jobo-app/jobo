@@ -24,6 +24,19 @@ describe JobsController do
   # Job. As you add validations to Job, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { { "company_name" => "MyString" } }
+  let(:bob_attributes)   do
+    # Company: "Potato"
+    # Job Title: "Front End Web Developer"
+    {
+      "bob_listing_url" => 'https://jobs.github.com/positions/154147d8-1edb-11e3-891f-39433b6c880b'
+    }
+  end
+
+  let(:invalid_bob_attributes) do
+    {
+      "bob_listing_url" => 'http://news.ycombinator.com/jobs'
+    }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -79,6 +92,14 @@ describe JobsController do
         post :create, {:job => valid_attributes}, valid_session
         response.should redirect_to(Job.last)
       end
+
+      it "creates a job using bob" do
+        post :create, {:job => bob_attributes}, valid_session
+        response.should redirect_to(Job.last)
+
+        Job.last.position_title.should eql "Front End Web Developer"
+        Job.last.company_name.should eql "Potato"
+      end
     end
 
     describe "with invalid params" do
@@ -94,6 +115,12 @@ describe JobsController do
         Job.any_instance.stub(:save).and_return(false)
         post :create, {:job => { "company_name" => "invalid value" }}, valid_session
         response.should render_template("new")
+      end
+
+      it "doesn't process invalid URLs" do
+        Job.any_instance.stub(:save).and_return(false)
+        post :create, {:job => invalid_bob_attributes, :format => :json}, valid_session
+        response.status.should eql 422
       end
     end
   end
