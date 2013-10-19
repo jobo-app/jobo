@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bob', :github => "tdgs/bob"
 
 # Pretty CSS
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'zurb-foundation', '~> 4.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
