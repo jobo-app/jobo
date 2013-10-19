@@ -17,3 +17,22 @@
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
+
+<div ng-app="blang">
+  <div ng-controller="JobUpdateCtrl" data-job-id="<%= @job.id %>">
+    <div class="job-update" ng-repeat="jobUpdate in jobUpdates">
+      {{ jobUpdate.created_at }}
+      {{ jobUpdate.description }}
+      <button ng-click="delete($index)">&times;</button>
+    </div>
+
+    <form ng-submit="add()" action="">
+      <fieldset>
+        <legend>New job update</legend>
+
+        <input ng-model="jobUpdate.description" type="text" id="post-title" placeholder="Description"/>
+        <input type="submit" value="Create"/>
+      </fieldset>
+    </form>
+  </div>
+</div>
