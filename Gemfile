@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 # Get job listings by URL
-gem 'bob', :github => "tdgs/bob"
+gem 'job-bob', require: 'bob'
 
 # Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
 gem 'simple_form'
