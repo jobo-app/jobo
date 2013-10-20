@@ -1,7 +1,12 @@
-<h1>
-  <%= @job.company_name %>
-  <small><%= @job.position_title %></small>
-</h1>
+<% content_for :title do %>
+  <%= @job.company_name %> - <%= @job.position_title %>
+<% end -%>
+<% content_for :header do %>
+  <h1>
+    <%= @job.company_name %>
+    <small><%= @job.position_title %></small>
+  </h1>
+<% end -%>
 
 <% if notice %>
   <p class="alert-box success"><%= notice %></p>

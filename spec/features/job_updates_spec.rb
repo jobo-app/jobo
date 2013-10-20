@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe "JobUpdates", js: true do
-  let(:job) { Job.create! }
+  let(:job) { Job.by_user(GuestUser.last).create! }
+
+  before do
+    visit root_path
+
+    click_link "Sign in as Guest"
+  end
 
   describe "adding an update" do
     it "adds the update to the job" do
@@ -15,7 +21,7 @@ describe "JobUpdates", js: true do
       wait_for_ajax
 
       page.should have_css(".job-update", text: "just an update")
-      JobUpdate.by_job_id(job.id).count.should == 1
+      JobUpdate.by_job(job).count.should == 1
     end
   end
 
@@ -31,7 +37,7 @@ describe "JobUpdates", js: true do
 
       wait_for_ajax
       page.should have_no_css(".job-update", text: "moufa")
-      JobUpdate.by_job_id(job.id).count.should == 0
+      JobUpdate.by_job(job).count.should == 0
     end
   end
 end

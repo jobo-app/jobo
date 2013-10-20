@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019144533) do
+ActiveRecord::Schema.define(version: 20131020145112) do
+
+  create_table "guest_users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "job_updates", force: true do |t|
     t.text     "description"
@@ -27,6 +32,9 @@ ActiveRecord::Schema.define(version: 20131019144533) do
     t.string   "position_title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
 end
