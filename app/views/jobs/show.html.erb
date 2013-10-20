@@ -14,36 +14,37 @@
 
 <div ng-app="blang">
   <div ng-controller="JobUpdateCtrl" data-job-id="<%= @job.id %>">
-    <div class="section-container auto" data-section>
-      <section class="active">
-        <p class="title" data-section-title><a href="#panel1">Generic Note</a></p>
-        <div class="content" data-section-content>
-          <form ng-submit="add()" action="" class="new-job-update">
-            <div class="row">
-              <div class="large-10 columns">
-                <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
-              </div>
-              <div class="large-2 columns">
-                <input class="small button expand" type="submit" value="Create"/>
-              </div>
-            </div>
-          </form>
+    <form ng-submit="add()" action="" class="new-job-update">
+      <fieldset>
+        <legend>New job update</legend>
+        <div class="row">
+          <div class="large-10 columns">
+            <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
+          </div>
+          <div class="large-2 columns">
+            <input class="small button expand" type="submit" value="Create"/>
+          </div>
         </div>
-      </section>
-      <section>
-        <p class="title" data-section-title><a href="#panel2">Resume</a></p>
-        <div class="content" data-section-content>
-          <p class="alert-box alert">WIP</p>
-        </div>
-      </section>
-    </div>
+      </fieldset>
+    </form>
 
-    <ul>
-      <li class="job-update" ng-repeat="jobUpdate in jobUpdates">
-        {{ jobUpdate.created_at }}
-        {{ jobUpdate.description }}
-        <button class="tiny button secondary" ng-click="delete($index)">&times;</button>
-      </li>
-    </ul>
+    <div class="job-updates">
+      <div class="job-update" ng-repeat="jobUpdate in jobUpdates">
+        <div class="row">
+          <div class="small-6 columns created-at">
+            <small class="relative">{{ jobUpdate.relative_created_at }}</small>
+            <small class="absolute">{{ jobUpdate.absolute_created_at }}</small>
+          </div>
+          <div class="small-6 columns align-right">
+            <button class="tiny button secondary" ng-click="delete($index)">Destroy</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <p>{{ jobUpdate.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

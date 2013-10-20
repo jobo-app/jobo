@@ -3,7 +3,6 @@ class JobUpdatesController < ApplicationController
 
   def index
     @job_updates = JobUpdate.by_job_id(params[:job_id]).newest_first
-    respond_with @job_updates
   end
 
   def create

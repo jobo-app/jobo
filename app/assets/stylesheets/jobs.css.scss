@@ -23,6 +23,17 @@
   }
 }
 
-form.new-job-update .row {
-  padding-top: 1em;
+.align-right {
+  text-align: right;
+}
+
+// By default, show the relative date. When hovering,
+// show the absolute one.
+.job-update .created-at {
+  .absolute { display: none; }
+
+  &:hover {
+    .absolute { display: inline; }
+    .relative { display: none; }
+  }
 }
