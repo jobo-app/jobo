@@ -49,6 +49,13 @@
           <div class="small-12 columns">
             <p>{{ jobUpdate.description }}</p>
             <p>URL: {{ jobUpdate.asset_url }}</p>
+            <form action="" class="edit-job-update">
+              <fieldset>
+                <legend>Add attachment</legend>
+                <div>
+                  <input type="file" ng-file-select="onFileUpload(jobUpdate,$files)" />
+                </div>
+            </form>
           </div>
         </div>
       </div>

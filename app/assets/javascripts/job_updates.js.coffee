@@ -29,7 +29,7 @@ Blang.controller "JobUpdateCtrl", ($scope, $http, JobUpdate) ->
   $scope.jobUpdates = JobUpdate.query(job_id: job_id)
 
   # Add a new jobUpdate
-  $scope.add = ->
+  $scope.add = () ->
     # add to the local array and also save to the server
     $scope.jobUpdates.unshift JobUpdate.save(description: $scope.jobUpdate.description, job_id: job_id)
     # reset the jobUpdate for the form
@@ -43,11 +43,16 @@ Blang.controller "JobUpdateCtrl", ($scope, $http, JobUpdate) ->
       $scope.jobUpdates[$index].$delete()
       # Remove from the local array
       $scope.jobUpdates.splice($index, 1)
-  $scope.onFileSelect = ($files) ->
-      return unless $files.length > 0
-      attachment = $files[0]
-      $http.uploadFile
-        url: '/job_updates/:id/upload'.replace(/:id/, $scope.jobUpdate.id),
-        data:
-          jobUpdate: $scope
-          file: attachment
+
+  # Add an attachment to a jobUpdate
+  $scope.onFileUpload = (jobUpdate, $files) ->
+    console.log arguments
+
+    attachment = $files[0]
+    $http.uploadFile
+      url: '/job_updates/:id/upload'.replace(/:id/, jobUpdate.id),
+      data:
+        jobUpdate: jobUpdate
+        file: attachment
+      headers:
+        'X-CSRF-Token': $("meta[name=csrf-token]").attr('content')
