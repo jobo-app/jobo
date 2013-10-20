@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # Set up the module
-window.Blang = angular.module("blang", ["ngResource"])
+window.Blang = angular.module("blang", ["ngResource", "angularFileUpload"])
 
 Blang.config ["$httpProvider", ($httpProvider) ->
   # Inject the CSRF token
@@ -19,7 +19,7 @@ Blang.config ["$httpProvider", ($httpProvider) ->
 Blang.factory "JobUpdate", ($resource) -> $resource "/job_updates/:id", id: "@id"
 
 # JobUpdate Controller
-Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
+Blang.controller "JobUpdateCtrl", ($scope, $http, JobUpdate) ->
   job_id = $('[ng-controller=JobUpdateCtrl]').data('job-id')
 
   # This is the jobUpdate we use for the form
@@ -43,3 +43,11 @@ Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
       $scope.jobUpdates[$index].$delete()
       # Remove from the local array
       $scope.jobUpdates.splice($index, 1)
+  $scope.onFileSelect = ($files) ->
+      return unless $files.length > 0
+      attachment = $files[0]
+      $http.uploadFile
+        url: '/job_updates/:id/upload'.replace(/:id/, $scope.jobUpdate.id),
+        data:
+          jobUpdate: $scope
+          file: attachment
