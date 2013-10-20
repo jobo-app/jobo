@@ -1,16 +1,23 @@
 class JobUpdatesController < ApplicationController
   include AngularController
 
+  before_action :require_signed_in
+
   def index
-    @job_updates = JobUpdate.by_job_id(params[:job_id]).newest_first
+    job = Job.by_user(current_user).find(params[:job_id])
+    @job_updates = JobUpdate.by_job(job).newest_first
   end
 
   def create
-    @job_update = JobUpdate.create!(params.permit(:description, :job_id))
+    job = Job.by_user(current_user).find(params[:job_id])
+    @job_update = JobUpdate.by_job(job).create!(params.permit(:description))
   end
 
   def destroy
-    JobUpdate.destroy(params[:id])
+    job_update = JobUpdate.find(params[:id])
+    if job_update.job.user == current_user
+      job_update.destroy
+    end
     head :ok
   end
 end

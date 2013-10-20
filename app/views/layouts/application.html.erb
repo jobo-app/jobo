@@ -22,13 +22,16 @@
 
   <body>
     <div class="row">
-      <div class="large-12 align-right">
+      <div class="large-4 push-8 align-right columns">
         <% if current_user %>
           Welcome, <%= current_user.name %>!
           <%= link_to "Sign out", signout_path, method: :delete, class: "small secondary button" %>
         <% else %>
           <%= link_to "Sign in as Guest", signin_path, method: :post, class: "small button" %>
         <% end -%>
+      </div>
+      <div class="large-8 pull-4 columns">
+        <%= yield :header %>
       </div>
     </div>
     <div class="row">

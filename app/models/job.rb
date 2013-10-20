@@ -12,6 +12,11 @@
 class Job < ActiveRecord::Base
   has_many :job_updates
   has_one :last_update, -> { order("created_at DESC") }, class_name: "JobUpdate"
+  belongs_to :user, class_name: "GuestUser"
+
+  scope :by_user, -> (user) {
+    where(user_id: user.id)
+  }
 
   # create a new job, using bob if bob_listing_url is provided
   # (discards other arguments then)

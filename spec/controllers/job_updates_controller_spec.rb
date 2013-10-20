@@ -9,12 +9,13 @@ describe JobUpdatesController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # JobsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {user_id: guest.id} }
+  let(:guest) { GuestUser.create! }
 
   let(:default_params) { { "format" => "json"} }
 
-  let(:job) { Job.create! }
-  let(:other_job) { Job.create! }
+  let(:job) { Job.by_user(guest).create! }
+  let(:other_job) { Job.by_user(guest).create! }
 
   describe "GET index" do
     it "assigns all job's updates as @job_updates" do

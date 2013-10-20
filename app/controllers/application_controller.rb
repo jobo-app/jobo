@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def require_signed_in
+    redirect_to root_path unless current_user
+  end
+
   def current_user
     if session[:user_id]
       @current_user ||= GuestUser.find(session[:user_id])
