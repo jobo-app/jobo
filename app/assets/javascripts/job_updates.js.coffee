@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # Set up the module
-window.Blang = angular.module("blang", ["ngResource"])
+window.Blang = angular.module("blang", ["ngResource", "angularFileUpload"])
 
 Blang.config ["$httpProvider", ($httpProvider) ->
   # Inject the CSRF token
@@ -19,7 +19,7 @@ Blang.config ["$httpProvider", ($httpProvider) ->
 Blang.factory "JobUpdate", ($resource) -> $resource "/job_updates/:id", id: "@id"
 
 # JobUpdate Controller
-Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
+Blang.controller "JobUpdateCtrl", ($scope, $http, JobUpdate) ->
   job_id = $('[ng-controller=JobUpdateCtrl]').data('job-id')
 
   # This is the jobUpdate we use for the form
@@ -29,7 +29,7 @@ Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
   $scope.jobUpdates = JobUpdate.query(job_id: job_id)
 
   # Add a new jobUpdate
-  $scope.add = ->
+  $scope.add = () ->
     # add to the local array and also save to the server
     $scope.jobUpdates.unshift JobUpdate.save(description: $scope.jobUpdate.description, job_id: job_id)
     # reset the jobUpdate for the form
@@ -43,3 +43,26 @@ Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
       $scope.jobUpdates[$index].$delete()
       # Remove from the local array
       $scope.jobUpdates.splice($index, 1)
+
+  # Add an attachment to a jobUpdate
+  $scope.onFileUpload = (jobUpdate, $files) ->
+    attachment = $files[0]
+    $http.uploadFile(
+      url: '/job_updates/:id/upload.json'.replace(/:id/, jobUpdate.id),
+      data:
+        jobUpdate: jobUpdate
+        asset: attachment
+      headers:
+        'X-CSRF-Token': $("meta[name=csrf-token]").attr('content')
+    )
+
+    jobUpdate.asset_url = '/job_updates/asset/:id/:filename'.replace(/:(\w+)/g, (_, match) ->
+        {
+          id: jobUpdate.id,
+          filename: attachment.name
+        }[match]
+    )
+
+  # Remove the attachment for a jobUpdate
+  $scope.removeAttachment = (jobUpdate) ->
+    jobUpdate.asset_url = null

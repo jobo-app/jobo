@@ -25,7 +25,7 @@
         <div class="row">
           <div class="large-10 columns">
             <input ng-model="jobUpdate.description" type="text" placeholder="Description" required/>
-            <input ng-model="jobUpdate.asset" type="file"/>
+            <input ng-model="jobUpdate.asset" ng-file-select="onFileSelect($files)" type="file"/>
           </div>
           <div class="large-2 columns">
             <input class="small button expand" type="submit" value="Create"/>
@@ -48,8 +48,21 @@
         <div class="row">
           <div class="small-12 columns">
             <p>{{ jobUpdate.description }}</p>
-            <p>URL: {{ jobUpdate.asset_url }}</p>
           </div>
+        </div>
+        <div class="row">
+          <div ng-show="jobUpdate.asset_url" class="small-12 columns">
+            <p>
+              URL: {{ jobUpdate.asset_url }}
+              <button class="tiny button secondary" ng-click="removeAttachment(jobUpdate)">Remove</button>
+            </p>
+          </div>
+          <form ng-show="!jobUpdate.asset_url" action="" class="edit-job-update">
+            <fieldset>
+              <legend>Add attachment</legend>
+              <input type="file" ng-file-select="onFileUpload(jobUpdate,$files)" />
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
