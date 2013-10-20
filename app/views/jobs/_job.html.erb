@@ -1,0 +1,28 @@
+<li>
+  <div class="job">
+    <h4>
+      <%= job.company_name %> <br/>
+      <small><%= job.position_title %></small>
+    </h4>
+    <div class="last-update">
+      <% if job.last_update %>
+        <div class="time">
+          Last updated
+          <%= distance_of_time_in_words_to_now job.last_update.created_at %>
+          ago
+        </div>
+        <p><%= job.last_update.description %></p>
+      <% else %>
+        <div class="panel">
+          <h5>No updates yet</h5>
+          Start adding updates from the <%= link_to 'job page', job %>.
+        </div>
+      <% end -%>
+    </div>
+    <div>
+      <%= link_to 'Show', job, class: 'tiny button' %>
+      <%= link_to 'Edit', edit_job_path(job), class: 'tiny button secondary' %>
+      <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny button secondary' %>
+    </div>
+  </div>
+</li>
