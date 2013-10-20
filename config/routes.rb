@@ -1,6 +1,7 @@
 JobSeeker::Application.routes.draw do
   resources :jobs
   resources :job_updates
+  resources :cv_updates, only: [:update, :create, :destroy]
 
   root 'jobs#index'
 
