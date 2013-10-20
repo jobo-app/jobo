@@ -6,7 +6,7 @@ class JobUpdatesController < ApplicationController
   end
 
   def create
-    @job_update = JobUpdate.create!(params.permit(:description, :job_id))
+    @job_update = JobUpdate.create!(params.permit(:description, :job_id, :asset))
   end
 
   def destroy

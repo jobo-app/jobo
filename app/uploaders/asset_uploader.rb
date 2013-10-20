@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class CvUploader < CarrierWave::Uploader::Base
+class AssetUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

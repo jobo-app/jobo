@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20131019164258) do
     t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
     t.string   "asset"
   end
 

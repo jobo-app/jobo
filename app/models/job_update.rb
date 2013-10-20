@@ -7,9 +7,11 @@
 #  job_id      :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  asset       :string(255)
 #
 
 class JobUpdate < ActiveRecord::Base
+  mount_uploader :asset, AssetUploader
   belongs_to :job, touch: true
 
   validates :description, :job, presence: true
