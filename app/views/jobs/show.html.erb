@@ -56,14 +56,13 @@
               URL: {{ jobUpdate.asset_url }}
               <button class="tiny button secondary" ng-click="removeAttachment(jobUpdate)">Remove</button>
             </p>
-            <form ng-show="!jobUpdate.asset_url" action="" class="edit-job-update">
-              <fieldset>
-                <legend>Add attachment</legend>
-                <div>
-                  <input type="file" ng-file-select="onFileUpload(jobUpdate,$files)" />
-                </div>
-            </form>
           </div>
+          <form ng-show="!jobUpdate.asset_url" action="" class="edit-job-update">
+            <fieldset>
+              <legend>Add attachment</legend>
+              <input type="file" ng-file-select="onFileUpload(jobUpdate,$files)" />
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
