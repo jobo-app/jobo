@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/tdgs/bob.git
-  revision: 1af9b9066bc50b982403c45a7fa2a87a52acaa09
+  revision: 18586324af798d5bdf77d2672335d3814036baba
   specs:
     bob (0.0.1)
       nokogiri
@@ -117,7 +117,7 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    oj (2.1.6)
+    oj (2.1.7)
     poltergeist (1.4.1)
       capybara (~> 2.1.0)
       cliver (~> 0.2.1)
