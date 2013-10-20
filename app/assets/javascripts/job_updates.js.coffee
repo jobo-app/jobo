@@ -31,7 +31,7 @@ Blang.controller "JobUpdateCtrl", ($scope, JobUpdate) ->
   # Add a new jobUpdate
   $scope.add = ->
     # add to the local array and also save to the server
-    $scope.jobUpdates.push JobUpdate.save(description: $scope.jobUpdate.description, job_id: job_id)
+    $scope.jobUpdates.unshift JobUpdate.save(description: $scope.jobUpdate.description, job_id: job_id)
     # reset the jobUpdate for the form
     $scope.jobUpdate = new JobUpdate()
 

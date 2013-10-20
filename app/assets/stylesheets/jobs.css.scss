@@ -1,3 +1,39 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jobs {
+  .job {
+    background: #fff * 0.95;
+    padding: 0.5em 1em;
+
+    h4 {
+      height: 3em;
+    }
+
+    .last-update {
+      height: 8em;
+      overflow: hidden;
+      margin-bottom: 0.4em;
+
+      .time {
+        color: #222 + #888;
+      }
+    }
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+// By default, show the relative date. When hovering,
+// show the absolute one.
+.job-update .created-at {
+  .absolute { display: none; }
+
+  &:hover {
+    .absolute { display: inline; }
+    .relative { display: none; }
+  }
+}

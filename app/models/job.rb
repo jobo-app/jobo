@@ -11,6 +11,7 @@
 
 class Job < ActiveRecord::Base
   has_many :job_updates
+  has_one :last_update, -> { order("created_at DESC") }, class_name: "JobUpdate"
 
   # create a new job, using bob if bob_listing_url is provided
   # (discards other arguments then)
@@ -27,5 +28,4 @@ class Job < ActiveRecord::Base
       job
     end
   end
-
 end

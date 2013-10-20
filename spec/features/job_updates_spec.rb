@@ -26,8 +26,7 @@ describe "JobUpdates", js: true do
       visit job_path(job)
 
       within all(".job-update").first do
-        # assuming the only button is the delete button
-        find("button").click
+        click_button "Destroy"
       end
 
       wait_for_ajax

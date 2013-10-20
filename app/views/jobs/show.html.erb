@@ -1,33 +1,50 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Company name:</strong>
+<h1>
   <%= @job.company_name %>
-</p>
+  <small><%= @job.position_title %></small>
+</h1>
 
-<p>
-  <strong>Position title:</strong>
-  <%= @job.position_title %>
-</p>
+<% if notice %>
+  <p class="alert-box success"><%= notice %></p>
+<% end -%>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<div>
+  <%= link_to 'Edit job', edit_job_path(@job), class: "secondary small button" %>
+  <%= link_to 'Back to list', jobs_path, class: "secondary small button" %>
+</div>
 
 <div ng-app="blang">
   <div ng-controller="JobUpdateCtrl" data-job-id="<%= @job.id %>">
-    <div class="job-update" ng-repeat="jobUpdate in jobUpdates">
-      {{ jobUpdate.created_at }}
-      {{ jobUpdate.description }}
-      <button ng-click="delete($index)">&times;</button>
-    </div>
-
-    <form ng-submit="add()" action="">
+    <form ng-submit="add()" action="" class="new-job-update">
       <fieldset>
         <legend>New job update</legend>
-
-        <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
-        <input type="submit" value="Create"/>
+        <div class="row">
+          <div class="large-10 columns">
+            <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
+          </div>
+          <div class="large-2 columns">
+            <input class="small button expand" type="submit" value="Create"/>
+          </div>
+        </div>
       </fieldset>
     </form>
+
+    <div class="job-updates">
+      <div class="job-update" ng-repeat="jobUpdate in jobUpdates">
+        <div class="row">
+          <div class="small-6 columns created-at">
+            <small class="relative">{{ jobUpdate.relative_created_at }}</small>
+            <small class="absolute">{{ jobUpdate.absolute_created_at }}</small>
+          </div>
+          <div class="small-6 columns align-right">
+            <button class="tiny button secondary" ng-click="delete($index)">Destroy</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <p>{{ jobUpdate.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

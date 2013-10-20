@@ -10,11 +10,15 @@
 #
 
 class JobUpdate < ActiveRecord::Base
-  belongs_to :job
+  belongs_to :job, touch: true
 
   validates :description, :job, presence: true
 
   scope :by_job_id, -> (job_id) {
     where(job_id: job_id)
+  }
+
+  scope :newest_first, -> {
+    order("created_at DESC")
   }
 end
