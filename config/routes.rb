@@ -1,7 +1,10 @@
 JobSeeker::Application.routes.draw do
   resources :jobs
-  resources :job_updates
-  resources :cv_updates, only: [:update, :create, :destroy]
+  resources :job_updates do
+    member do
+      post 'upload'
+    end
+  end
 
   post "signin", to: 'sessions#create', as: "signin"
   delete "signout", to: 'sessions#destroy', as: "signout"
