@@ -2,6 +2,8 @@ class JobUpdatesController < ApplicationController
   include AngularController
 
   before_action :require_signed_in
+  before_action :fetch_job_update, only: [:upload, :destroy]
+  before_action :check_user, only: [:upload, :destroy]
 
   def index
     job = Job.by_user(current_user).find(params[:job_id])
@@ -14,18 +16,21 @@ class JobUpdatesController < ApplicationController
   end
 
   def upload
-    @job_update = JobUpdate.find(params[:id])
-    head :unautharized and return if @job_update.job.user != current_user
-
     @job_update.asset = params[:asset]
     @job_update.save!
   end
 
   def destroy
-    job_update = JobUpdate.find(params[:id])
-    if job_update.job.user == current_user
-      job_update.destroy
-    end
+    @job_update.destroy
     head :ok
+  end
+
+  private
+  def fetch_job_update
+    @job_update = JobUpdate.find(params[:id])
+  end
+
+  def check_user
+    head :unautharized and return if @job_update.job.user != current_user
   end
 end
