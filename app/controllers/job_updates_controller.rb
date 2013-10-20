@@ -14,17 +14,11 @@ class JobUpdatesController < ApplicationController
   end
 
   def upload
-    job_update = JobUpdate.find(params[:id])
-    if job_update.job.user == current_user
-      job_update.asset = params[:asset]
-      if job_update.save
-        @job_update = job_update
-      else
-        head :unprocessable_entity
-      end
-    else
-      head :unauthorized
-    end
+    @job_update = JobUpdate.find(params[:id])
+    head :unautharized and return if @job_update.job.user == current_user
+
+    @job_update.asset = params[:asset]
+    @job_update.save!
   end
 
   def destroy
