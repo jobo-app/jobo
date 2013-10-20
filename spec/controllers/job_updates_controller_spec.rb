@@ -6,7 +6,7 @@ describe JobUpdatesController do
   # adjust the attributes here as well.
   let(:asset) { fixture_file_upload('simple.pdf') }
   let(:valid_attributes) do
-    { "description" => "MyString", "job_id" => job.id, "asset" => asset }
+    { "description" => "MyString", "job_id" => job.id}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -29,6 +29,29 @@ describe JobUpdatesController do
     end
   end
 
+  describe "POST Upload" do
+    let(:file) {fixture_file_upload("simple.pdf")}
+    let(:job_update) {JobUpdate.create! valid_attributes}
+
+    it "uploads a file" do
+      post :upload, {id: job_update.id, asset: file}, valid_session
+      job_update.reload
+      expect(job_update.asset.url).to eql "/uploads/job_update/asset/#{job_update.id}/simple.pdf"
+    end
+
+    context "with an other user" do
+      before do
+        valid_session[:user_id] = GuestUser.create!
+      end
+
+      it "fails" do
+        post :upload, {id: job_update.id, asset: file}, valid_session
+        job_update.reload
+        expect(job_update.asset.url).to eql nil
+      end
+    end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "creates a new JobUpdate" do
@@ -47,5 +70,4 @@ describe JobUpdatesController do
       }.to change(JobUpdate, :count).by(-1)
     end
   end
-
 end

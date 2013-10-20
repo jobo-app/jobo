@@ -34,4 +34,10 @@ class JobUpdatesController < ApplicationController
     end
     head :ok
   end
+
+  private
+
+  def fetch_job_update
+    @job_update = JobUpdate.by_user(current_iser).find(params[:id])
+  end
 end
