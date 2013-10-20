@@ -16,8 +16,8 @@ class JobUpdate < ActiveRecord::Base
 
   validates :description, :job, presence: true
 
-  scope :by_job_id, -> (job_id) {
-    where(job_id: job_id)
+  scope :by_job, -> (job) {
+    where(job_id: job.id)
   }
 
   scope :newest_first, -> {
