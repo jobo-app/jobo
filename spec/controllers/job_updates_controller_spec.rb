@@ -34,7 +34,7 @@ describe JobUpdatesController do
     let(:job_update) {JobUpdate.create! valid_attributes}
 
     it "uploads a file" do
-      post :upload, {id: job_update.id, asset: file}, valid_session
+      post :upload, default_params.merge(id: job_update.id, asset: file), valid_session
       job_update.reload
       expect(job_update.asset.url).to eql "/uploads/job_update/asset/#{job_update.id}/simple.pdf"
     end
@@ -45,7 +45,7 @@ describe JobUpdatesController do
       end
 
       it "fails" do
-        post :upload, {id: job_update.id, asset: file}, valid_session
+        post :upload, default_params.merge(id: job_update.id, asset: file), valid_session
         job_update.reload
         expect(job_update.asset.url).to eql nil
       end

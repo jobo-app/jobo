@@ -15,7 +15,7 @@ class JobUpdatesController < ApplicationController
 
   def upload
     @job_update = JobUpdate.find(params[:id])
-    head :unautharized and return if @job_update.job.user == current_user
+    head :unautharized and return if @job_update.job.user != current_user
 
     @job_update.asset = params[:asset]
     @job_update.save!
