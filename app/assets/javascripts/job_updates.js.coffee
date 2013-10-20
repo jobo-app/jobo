@@ -46,13 +46,15 @@ Blang.controller "JobUpdateCtrl", ($scope, $http, JobUpdate) ->
 
   # Add an attachment to a jobUpdate
   $scope.onFileUpload = (jobUpdate, $files) ->
-    console.log arguments
-
     attachment = $files[0]
     $http.uploadFile
       url: '/job_updates/:id/upload'.replace(/:id/, jobUpdate.id),
       data:
         jobUpdate: jobUpdate
-        file: attachment
+        asset: attachment
       headers:
         'X-CSRF-Token': $("meta[name=csrf-token]").attr('content')
+
+  # Remove the attachment for a jobUpdate
+  $scope.removeAttachment = (jobUpdate) ->
+    jobUpdate.asset_url = null

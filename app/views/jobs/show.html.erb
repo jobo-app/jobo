@@ -48,8 +48,15 @@
         <div class="row">
           <div class="small-12 columns">
             <p>{{ jobUpdate.description }}</p>
-            <p>URL: {{ jobUpdate.asset_url }}</p>
-            <form action="" class="edit-job-update">
+          </div>
+        </div>
+        <div class="row">
+          <div ng-show="jobUpdate.asset_url" class="small-12 columns">
+            <p>
+              URL: {{ jobUpdate.asset_url }}
+              <button class="tiny button secondary" ng-click="removeAttachment(jobUpdate)">Remove</button>
+            </p>
+            <form ng-show="!jobUpdate.asset_url" action="" class="edit-job-update">
               <fieldset>
                 <legend>Add attachment</legend>
                 <div>
