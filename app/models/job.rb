@@ -18,6 +18,8 @@ class Job < ActiveRecord::Base
     where(user_id: user.id)
   }
 
+  validates :company_name, :position_title, presence: true
+
   # create a new job, using bob if bob_listing_url is provided
   # (discards other arguments then)
   def self.from_bob(url)

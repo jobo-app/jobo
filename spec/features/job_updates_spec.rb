@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "JobUpdates", js: true do
-  let(:job) { Job.by_user(GuestUser.last).create! }
+  let(:job) { Job.by_user(GuestUser.last).create! company_name: "Apple", position_title: "Arch-hipster" }
 
   before do
     visit root_path
