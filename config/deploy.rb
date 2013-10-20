@@ -32,7 +32,7 @@ require 'bundler/capistrano'
 #############################################
 
 GITHUB_REPOSITORY_NAME = 'r13-team-482'
-LINODE_SERVER_HOSTNAME = 'serenity.r13.railsrumble.com'
+LINODE_SERVER_HOSTNAME = '212.71.239.157'
 
 #############################################
 #############################################
