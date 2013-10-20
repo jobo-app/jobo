@@ -25,6 +25,7 @@
         <div class="row">
           <div class="large-10 columns">
             <input ng-model="jobUpdate.description" type="text" placeholder="Description"/>
+            <input ng-model="jobUpdate.asset" type="file"/>
           </div>
           <div class="large-2 columns">
             <input class="small button expand" type="submit" value="Create"/>
@@ -47,6 +48,7 @@
         <div class="row">
           <div class="small-12 columns">
             <p>{{ jobUpdate.description }}</p>
+            <p>URL: {{ jobUpdate.asset_url }}</p>
           </div>
         </div>
       </div>
