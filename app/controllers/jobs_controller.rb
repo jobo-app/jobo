@@ -24,7 +24,12 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
+    options = job_params
+    if options[:bob_listing_url]
+      @job = Job.from_bob(options[:bob_listing_url])
+    else
+      @job = Job.new(options)
+    end
 
     respond_to do |format|
       if @job.save
@@ -43,6 +48,7 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +75,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:company_name, :position_title)
+      params.require(:job).permit(:company_name, :position_title, :bob_listing_url)
     end
 end

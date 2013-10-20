@@ -13,6 +13,7 @@ describe "JobUpdates", js: true do
       end
 
       wait_for_ajax
+
       page.should have_css(".job-update", text: "just an update")
       JobUpdate.by_job_id(job.id).count.should == 1
     end
