@@ -1,7 +1,12 @@
-<h1>
+<% content_for :title do %>
   Listing jobs
-  <small><%= link_to 'New job', new_job_path %></small>
-</h1>
+<% end -%>
+<% content_for :header do %>
+  <h1>
+    Listing jobs
+    <small><%= link_to 'New job', new_job_path %></small>
+  </h1>
+<% end -%>
 
 <%= render 'jobs/new_from_url' %>
 

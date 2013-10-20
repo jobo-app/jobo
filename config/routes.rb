@@ -1,8 +1,15 @@
 JobSeeker::Application.routes.draw do
   resources :jobs
-  resources :job_updates
+  resources :job_updates do
+    member do
+      post 'upload'
+    end
+  end
 
-  root 'jobs#index'
+  post "signin", to: 'sessions#create', as: "signin"
+  delete "signout", to: 'sessions#destroy', as: "signout"
+
+  root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

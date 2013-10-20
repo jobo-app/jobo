@@ -1,10 +1,11 @@
 class JobsController < ApplicationController
+  before_action :require_signed_in
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.includes(:last_update)
+    @jobs = Job.includes(:last_update).by_user(current_user)
   end
 
   # GET /jobs/1
@@ -26,9 +27,9 @@ class JobsController < ApplicationController
   def create
     options = job_params
     if options[:bob_listing_url]
-      @job = Job.from_bob(options[:bob_listing_url])
+      @job = Job.by_user(current_user).from_bob(options[:bob_listing_url])
     else
-      @job = Job.new(options)
+      @job = Job.by_user(current_user).new(options)
     end
 
     respond_to do |format|
@@ -70,7 +71,7 @@ class JobsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
-      @job = Job.find(params[:id])
+      @job = Job.by_user(current_user).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
