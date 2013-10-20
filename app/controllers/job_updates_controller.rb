@@ -18,7 +18,7 @@ class JobUpdatesController < ApplicationController
     if job_update.job.user == current_user
       job_update.asset = params[:asset]
       if job_update.save
-        head :ok
+        @job_update = job_update
       else
         head :unprocessable_entity
       end
