@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131020145112) do
     t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "asset"
   end
 
   add_index "job_updates", ["job_id"], name: "index_job_updates_on_job_id"
