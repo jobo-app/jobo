@@ -13,8 +13,8 @@ describe JobUpdatesController do
 
   let(:default_params) { { "format" => "json"} }
 
-  let(:job) { Job.create! }
-  let(:other_job) { Job.create! }
+  let(:job) { Job.create! company_name: "Megadodo Publications", position_title: "Hitchhiking writer" }
+  let(:other_job) { Job.create! company_name: "The London Zoo", position_title: "Unambiguous monkey" }
 
   describe "GET index" do
     it "assigns all job's updates as @job_updates" do

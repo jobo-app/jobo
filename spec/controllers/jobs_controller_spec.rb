@@ -23,7 +23,7 @@ describe JobsController do
   # This should return the minimal set of attributes required to create a valid
   # Job. As you add validations to Job, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "company_name" => "MyString" } }
+  let(:valid_attributes) { { "company_name" => "MyString", position_title: "MyOtherString" } }
   let(:bob_attributes)   do
     # Company: "Potato"
     # Job Title: "Front End Web Developer"

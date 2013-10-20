@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "JobUpdates", js: true do
-  let(:job) { Job.create! }
+  let(:job) { Job.create! company_name: "Apple", position_title: "Arch-hipster" }
 
   describe "adding an update" do
     it "adds the update to the job" do
