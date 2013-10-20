@@ -13,3 +13,7 @@
  *= require foundation
  *= require_tree .
  */
+
+.space-for-vote-banner {
+  height: 36px;
+}
