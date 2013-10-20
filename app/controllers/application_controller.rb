@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    if session[:user_id]
-      @current_user ||= GuestUser.find(session[:user_id])
+    @current_user ||= begin
+      session[:user_id] and GuestUser.find(session[:user_id])
     end
   end
   helper_method :current_user
