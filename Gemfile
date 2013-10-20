@@ -33,6 +33,9 @@ gem 'bob', :github => "tdgs/bob"
 # Pretty CSS
 gem 'zurb-foundation', '~> 4.0'
 
+# Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
