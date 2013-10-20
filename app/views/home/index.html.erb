@@ -5,6 +5,30 @@
   <h1>Welcome to Job Seeker</h1>
 <% end -%>
 
-<div class="panel">
-  <p>In order to use this web application, you have to sign in.</p>
+<div class="product-description">
+  <div class="row">
+    <div class="large-4 columns">
+      <%= image_tag "hero-1.jpg" %>
+    </div>
+    <div class="large-8 columns">
+      <p>Found an interesting job posting you don't want to forget about?</p>
+      <p>Maybe you already started making a list of your next career steps.</p>
+      <p>JobSeeker is the place where you can keep that list organized.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+      <p>Every job you create has its own timeline of updates.</p>
+      <p>Whenever you communicate with the recruiter just make a new note about the important stuff you discussed about.</p>
+      <p>During the later stages, keep track of your interview dates and any tasks you have to complete.</p>
+    </div>
+    <div class="large-4 columns">
+      <%= image_tag "hero-2.jpg" %>
+    </div>
+  </div>
 </div>
+
+<p class="align-center">
+  <%= link_to "Sign in as a guest and start using JobSeeker!", signin_path, method: :post, class: "button" %>
+</p>
