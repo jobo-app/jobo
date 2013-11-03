@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -75,6 +75,5 @@ gem 'capistrano', '~> 2.15'
 
 
 group :production do
-  gem 'mysql2' # If using mysql in development, this can be outside the production group.
   gem 'therubyracer'
 end

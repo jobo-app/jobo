@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20131020145112) do
     t.string   "asset"
   end
 
-  add_index "job_updates", ["job_id"], name: "index_job_updates_on_job_id"
+  add_index "job_updates", ["job_id"], name: "index_job_updates_on_job_id", using: :btree
 
   create_table "jobs", force: true do |t|
     t.string   "company_name"
@@ -36,6 +36,6 @@ ActiveRecord::Schema.define(version: 20131020145112) do
     t.integer  "user_id"
   end
 
-  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
 end
